@@ -7,6 +7,15 @@
     "email": "support@tana.inc",
     "url": "https://tana.inc"
   },
-  "keywords": ["tana", "meetings", "transcripts", "screen-share", "mcp", "notes", "tasks", "calendar"],
-  "logo": "logo.svg"
+  "keywords": [
+    "tana",
+    "meetings",
+    "transcripts",
+    "screen-share",
+    "mcp",
+    "notes",
+    "tasks",
+    "calendar"
+  ],
+  "logo": "assets/logo.svg"
 }
