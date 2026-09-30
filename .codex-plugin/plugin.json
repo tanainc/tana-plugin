@@ -36,9 +36,9 @@
     "privacyPolicyURL": "https://tana.inc/privacy",
     "termsOfServiceURL": "https://tana.inc/terms",
     "defaultPrompt": [
-      "Prep me for my next meeting from Tana",
-      "Write a client recap of my last meeting, using what was shown on screen",
-      "Has anyone in Tana discussed this before?"
+      "Prep me for my next meeting using data in Tana",
+      "Write a client recap of my last meeting in Tana, using what was shown on screen",
+      "Has anyone discussed this before in Tana?"
     ],
     "brandColor": "#F76B15",
     "composerIcon": "./logo.svg",
