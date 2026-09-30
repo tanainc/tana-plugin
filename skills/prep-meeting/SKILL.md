@@ -30,10 +30,16 @@ from the last meetings with the same people: what they said, and what everyone l
      ```
    Take the 2–3 most relevant.
 
-4. **Read each previous meeting fully.** Follow the `tana-meeting` skill: transcript, summary,
-   attached docs, and **every screen-share screenshot**. Note what was shown and how people reacted
-   ("they saw the Q3 roadmap at 14:20 and pushed back on the October date"). Look at the pixels with
-   `readScreenshotImages` for anything you will refer to: a price, a date, a design.
+4. **Read each previous meeting fully.** For every past meeting you use, in this order:
+   1. `readEvent({ eventUri })` for `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+   2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** The frames are the only record of
+      what people were looking at: the roadmap, the sketch, the numbers, the bug. Note what was shown
+      and when ("they saw the Q3 roadmap at 14:20 and pushed back on the October date").
+   3. `readScreenshotImages({ id: callUri, cids: [...] })` for anything you will refer to: a price, a
+      date, a design, a chart. Up to 10 cids per call.
+   4. `readFullTranscript({ id: callUri })`, reading the lines around each frame that mattered.
+   5. `readItems` on the summary and attached docs, with a `task`.
+   The `tana-meeting` skill has the details of each part.
 
 5. **Find what's still open.**
    - Tasks on the topic: `searchItems` with `targets: [{ "target": "text", "state": ["Inbox", "In Progress"] }]`
@@ -76,5 +82,7 @@ Ask
 
 - Prep is for the user, not the attendees. Be frank about risks.
 - Every claim about last time carries a date and, for meetings, a mm:ss.
+- Never write the prep before calling `readScreenShareScreenshots` for each Tana-recorded past meeting.
+  "Nothing was shared on screen" is a valid finding; skipping the call is not.
 - If there is no earlier meeting with these people, say so and prep from the invite and docs.
 - Questions must come from real open items, not generic ones.

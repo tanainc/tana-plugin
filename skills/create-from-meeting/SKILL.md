@@ -13,16 +13,22 @@ transcript is the source for what was said about it.**
 
 ## Steps
 
-1. **Read the meeting.** Follow the `tana-meeting` skill to locate the meeting and read all of it:
-   event, every screen-share screenshot, transcript, summary and attached docs.
+1. **Read the meeting.** Locate it (see the `tana-meeting` skill), then, in this order:
+   1. `readEvent({ eventUri })` for `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+   2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** The frames are the sketches,
+      designs and slides the deliverable is about.
+   3. `readScreenshotImages({ id: callUri, cids: [...] })` for the frames that carry the substance
+      (up to 10 cids per call).
+   4. `readFullTranscript({ id: callUri })`, reading around the frames that mattered.
+   5. `readItems` on the summary and attached docs, with a `task`.
+   The `tana-meeting` skill has the details of each part.
 
 2. **Pick the shape and the reader.** If the user named a format, use it. If not, ask one short
    question ("Slack recap, client email, or slides?"). A customer-facing piece drops internal
    chatter, prices not yet agreed, and anything said about the customer.
 
 3. **Walk the screen, frame by frame.** For each frame that was discussed:
-   - look at the pixels: `readScreenshotImages({ id: callUri, cids: [...] })` (up to 10 per call)
-     for sketches, designs, slides and numbers
+   - look at the pixels (step 1.3) for sketches, designs, slides and numbers
    - read the transcript for that frame's window (`capturedAtSec` to `visibleUntilSec`)
    - write what was agreed about that frame, in plain words, and who asked for it
    Frames nobody talked about are usually scrolling; leave them out.
@@ -79,5 +85,7 @@ each with what was said, and write for the reader.
 - Never invent an agreement. "We discussed X" is not "we agreed X".
 - Attribute requests and decisions to the person who made them.
 - Numbers, names and on-screen text come from the screenshot, checked in the pixels.
-- If nothing was shared on screen, say so, and build from the transcript and attached docs.
+- Never write before calling `readScreenShareScreenshots` for each Tana-recorded meeting you use.
+  "Nothing was shared on screen" is a valid finding (then build from the transcript and attached
+  docs); skipping the call is not.
 - Keep it as long as the reader needs, not as long as the meeting was.

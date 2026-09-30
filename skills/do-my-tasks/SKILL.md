@@ -29,9 +29,15 @@ the user to approve, and hand back a short list of what only they can do.
 
 4. **Understand each task.** `readItems({ ids: [...], task: "what exactly is asked, by whom, by when, linked docs" })`.
    To find the meeting a task came from, `getItemInfo({ ids: [taskUri] })`: when `createdIn` or `ownerUri`
-   is a `tana:event:` URI, read that meeting with the `tana-meeting` skill. **Read its screen-share
-   screenshots for the moment the task came up.** The thing to fix, the doc to change or the numbers
-   to check were often on screen, and the task title alone won't tell you.
+   is a `tana:event:` URI, read that meeting, in this order:
+   1. `readEvent({ eventUri })` for `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+   2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** The frames show what the task
+      actually refers to: the thing to fix, the doc to change, the numbers to check. The task title alone won't tell you.
+   3. `readScreenshotImages({ id: callUri, cids: [...] })` for the frames around the moment the task came up
+      (up to 10 cids per call).
+   4. `readFullTranscript({ id: callUri })`, reading around those frames.
+   5. `readItems` on the summary and attached docs, with a `task`.
+   The `tana-meeting` skill has the details of each part.
 
 5. **Triage and show it** before doing anything (skip the wait if the user said "just go"):
 
@@ -75,5 +81,7 @@ Unclear
 - Never mark a task Completed that you only started. Append the partial work and leave the state.
 - Never send anything on the user's behalf (email, Slack, invites). Draft it; they send it.
 - In a chat app with no code access, turn a code task into a short implementation plan instead.
+- Never start a task that came from a Tana-recorded meeting before calling `readScreenShareScreenshots`
+  for that meeting. "Nothing was shared on screen" is a valid finding; skipping the call is not.
 - For meeting action items, work from the meeting's summary, attached docs, transcript and
   screenshots. Don't invent owners: only take what was clearly given to the user.

@@ -24,13 +24,15 @@ A small question deserves a small answer: the fact, where it came from, and a li
 
 2. **Read only the best source.**
    - A doc: `readItems({ ids: [id], task: "<the question>" })`.
-   - A meeting: find the passage with `readFullTranscript` (narrow with `startSec` / `endSec` once you
-     know roughly where), then **check the screen at that moment**:
-     `readScreenShareScreenshots({ id: callUri, startSec, endSec })`. Numbers, dates, names and
-     choices are often on the shared screen (a pricing table, a roadmap, a chosen option), and the
-     screenshot is more exact than what was said. When the answer is a number, date or name on that
-     frame, read it off the pixels: `readScreenshotImages({ id: callUri, cids: [cid] })`.
-     See the `tana-meeting` skill for the pairing.
+   - A meeting (one or two at most). In this order:
+     1. `readEvent({ eventUri })` for `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+     2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** A decision or number is often on
+        a slide or sheet, not in the words. Add `startSec` / `endSec` once you know where to look.
+     3. `readScreenshotImages({ id: callUri, cids: [...] })` only when the answer is a number, date, name
+        or choice shown on a frame: read it off the pixels.
+     4. `readFullTranscript({ id: callUri })` to find the passage (narrow with `startSec` / `endSec`).
+     5. `readItems` on the summary or attached docs with a `task`, if they hold the answer.
+     The `tana-meeting` skill has the details of each part.
    - A pasted Tana link: read exactly that item (the `tana-meeting` skill shows how).
 
 3. **Check it is still true.** If a later meeting or doc changed the answer, the latest one wins.
@@ -55,6 +57,8 @@ When the answer changed over time:
 
 - One or two sentences. Bold the answer.
 - Always name the source: meeting or doc, date, and who, plus mm:ss for meetings.
+- Never answer from a Tana-recorded meeting before calling `readScreenShareScreenshots` for it.
+  "Nothing was shared on screen" is a valid finding; skipping the call is not.
 - Say "decided" only if it was decided. Otherwise: "discussed, not decided".
 - Not found? "I couldn't find that in Tana." Then one line on what you searched.
 - If the user wants more, offer the `find-prior-art` history in one line.

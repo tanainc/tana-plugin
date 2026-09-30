@@ -18,8 +18,12 @@ the meeting so everyone sees it when the meeting opens, and tell the user where 
 
 2. **Read it.** `readEvent({ eventUri })`: note `agendaUri`, `pinnedItems` and `relatedDocs`, so you
    don't add something that's already there. For a past meeting ("add my notes to yesterday's
-   meeting"), also list its frames with `readScreenShareScreenshots({ id: callUri })`, so notes can
-   point at what was on screen and embed a frame with `![what it shows](cid:<cid>)`.
+   meeting"), also, in this order:
+   1. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** Notes on a past meeting should
+      point at what was shown; embed a frame with `![what it shows](cid:<cid>)`.
+   2. `readScreenshotImages({ id: callUri, cids: [...] })` for the frames you will refer to (up to 10 per call).
+   3. `readFullTranscript({ id: callUri })` around those frames, if the notes need the words.
+   The `tana-meeting` skill has the details of each part.
 
 3. **Gather the item.** If it lives elsewhere (bugs in an issue tracker, a web page, a file in the repo),
    collect it with the tools you have and turn it into short text with links. If it is a Tana doc,
@@ -61,3 +65,5 @@ Added to Design review, Thu 1 Oct 10:00 <link>:
   `updateEvent`'s `description` only changes Tana's copy, and the next calendar sync may overwrite it.
 - Keep agenda lines short: one topic per line, with the owner and a link.
 - If two meetings match, name both and ask which one.
+- Never write notes on a past Tana-recorded meeting before calling `readScreenShareScreenshots` for it.
+  "Nothing was shared on screen" is a valid finding; skipping the call is not.

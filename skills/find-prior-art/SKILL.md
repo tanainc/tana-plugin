@@ -33,12 +33,16 @@ reads the passages where the topic came up, and reports the history with links.
 4. **Read them.**
    - Docs: `readItems({ ids: [...], task: "what was said about <topic>: decisions, feedback, who, when" })`.
    - Meetings (hits of kind event, transcript or call share one id: `tana:event:<id>`, `tana:transcript:<id>`,
-     `tana:call:<id>`): `readEvent` for the date and people, then `readFullTranscript` and find the
-     passage. Read around it with `startSec` / `endSec`.
-   - **Check the screen for that passage:** `readScreenShareScreenshots({ id: "tana:call:<id>", startSec, endSec })`
-     over the same window. If the frame shows the bug, the design or the data being discussed, say what it
-     showed, and look at the pixels with `readScreenshotImages` when the detail matters.
-     See the `tana-meeting` skill for how screenshots and transcript line up.
+     `tana:call:<id>`). For every meeting hit you read, in this order:
+     1. `readEvent({ eventUri })` for the date, people, `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+     2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** A decision or number is often on
+        a slide or sheet, not in the words. Add `startSec` / `endSec` to focus on the passage.
+     3. `readScreenshotImages({ id: callUri, cids: [...] })` for the frames that show the bug, design or
+        data being discussed (up to 10 cids per call).
+     4. `readFullTranscript({ id: callUri })`, reading around the frames and the passage that matched
+        (narrow with `startSec` / `endSec`).
+     5. `readItems` on the summary and attached docs with a `task`, if the passage needs them.
+     The `tana-meeting` skill has the details of each part.
 
 5. **Get links.** `getShareLink({ ids: [...] })` for every meeting and doc you cite.
 
@@ -64,6 +68,8 @@ dropped in March.
 ## Rules
 
 - Quote briefly and exactly; give the date, the speaker and the mm:ss.
+- Never report on a meeting hit before calling `readScreenShareScreenshots` for it. "Nothing was shared
+  on screen" is a valid finding; skipping the call is not. (Search results you don't read need no call.)
 - Say what was on screen when it matters ("the error on screen was...").
 - Separate what was decided from what was only said.
 - Nothing found? Say so, and list what you searched for, so the user can refine.

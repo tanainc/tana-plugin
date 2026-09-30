@@ -11,11 +11,18 @@ says what people decided about it. This skill turns both into a confirmed plan a
 
 ## Steps
 
-1. **Read the meeting.** Follow the `tana-meeting` skill to locate the meeting and read all of it:
-   event, every screen-share screenshot, transcript, summary and attached docs.
+1. **Read the meeting.** Locate it (see the `tana-meeting` skill), then, in this order:
+   1. `readEvent({ eventUri })` for `callUri`, `summaryUri`, `relatedDocs`, `pinnedItems`.
+   2. `readScreenShareScreenshots({ id: callUri })`. **Not optional.** The bug, UI or sketch on screen
+      is often the real spec, and nobody reads it out in full.
+   3. `readScreenshotImages({ id: callUri, cids: [...] })` for the frames that carry the substance
+      (up to 10 cids per call).
+   4. `readFullTranscript({ id: callUri })`, reading around the frames that mattered.
+   5. `readItems` on the summary and attached docs, with a `task`.
+   The `tana-meeting` skill has the details of each part.
 
 2. **Mine the screenshots for the spec.** For every frame that shows something to build or fix,
-   look at the pixels: `readScreenshotImages({ id: callUri, cids: [...] })`. Pull out exactly:
+   look at the pixels (step 1.3). Pull out exactly:
    - error messages, stack traces, log lines, URLs and routes
    - UI copy, labels, component and screen names, layout, spacing, colours, states
    - data: column names, example values, numbers, edge cases in a table
@@ -90,4 +97,6 @@ Checks: <command> passed
 - Build what was decided. Ideas floated with "maybe", "later" or "what if" go under out of scope.
 - When the meeting changed its mind, the later decision wins. Mention the reversal in the spec.
 - If the screenshots contradict the transcript, stop and ask; don't guess.
-- If nothing was shared on screen, say so, and lean on the transcript and linked docs.
+- Never build before calling `readScreenShareScreenshots` for each Tana-recorded meeting you use.
+  "Nothing was shared on screen" is a valid finding (then lean on the transcript and linked docs);
+  skipping the call is not.
