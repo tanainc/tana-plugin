@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tana",
   "version": "0.1.0",
-  "description": "Work with your Tana meetings from your coding agent: transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
+  "description": "Work with your Tana meetings from Claude, ChatGPT or your coding agent: transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
   "author": {
     "name": "Tana",
     "email": "support@tana.inc",

@@ -1,9 +1,9 @@
 {
   "$schema": "https://code.claude.com/schemas/marketplace.json",
   "name": "tana",
-  "description": "Official Tana skills and MCP connector for working with meetings, transcripts and tasks from your coding agent.",
+  "description": "Official Tana skills and MCP connector for working with meetings, transcripts and tasks from Claude, ChatGPT and coding agents.",
   "metadata": {
-    "description": "Official Tana skills and MCP connector for working with meetings, transcripts and tasks from your coding agent."
+    "description": "Official Tana skills and MCP connector for working with meetings, transcripts and tasks from Claude, ChatGPT and coding agents."
   },
   "owner": {
     "name": "Tana",
@@ -14,7 +14,7 @@
     {
       "name": "tana",
       "source": "./",
-      "description": "Work with your Tana meetings from your coding agent: transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
+      "description": "Work with your Tana meetings from Claude, ChatGPT or your coding agent: transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
       "author": {
         "name": "Tana",
         "email": "support@tana.inc",
