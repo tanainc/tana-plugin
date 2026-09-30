@@ -35,8 +35,10 @@ transcript is the source for what was said about it.**
      with `![what it shows](cid:<cid>)`, copying the full 64-character cid from
      `readScreenShareScreenshots`.
    - a visual artifact: `createArtifact({ artifactType, title, data, recap })`, where `artifactType`
-     is `"slides"`, `"storyboard"` or `"customer-journey"` and `data` follows that type's schema
-     (storyboard scenes take `screenshotIds`).
+     is `"slides"`, `"storyboard"` or `"customer-journey"`. First call
+     `readSkill({ title: "Create storyboard artifact" })` (or `slides` / `customer journey`) to get that
+     type's `data` schema. In a storyboard, put the real screen-share frames in the scenes'
+     `screenshotIds`: what was actually on screen beats a generated illustration.
    Either one lands as a proposal in Tana for the user to approve. Once approved, offer to pin it to
    the meeting page: `pinItem({ target: "event", targetUri: eventUri, itemUris: [docUri] })`.
 

@@ -22,8 +22,8 @@ the user to approve, and hand back a short list of what only they can do.
    (`searchItems`). Skip `Later` unless the user asks for it.
 
 3. **Add action items from recent meetings.** `listEvents` for the last 7 days (or the range the user
-   names). For each meeting the user joined, read the summary with
-   `readItems({ ids: [summaryUri], task: "action items and commitments for <name>" })`. Where the summary
+   names). For each one, `readEvent` gives `participants` and `summaryUri`; for meetings the user
+   joined, read the summary with `readItems({ ids: [summaryUri], task: "action items and commitments for <name>" })`. Where the summary
    is thin, scan the transcript (`readFullTranscript`) for "I'll ...", "can you ..., <name>". Drop anything
    already covered by a task from step 2.
 

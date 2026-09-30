@@ -17,8 +17,8 @@ A small question deserves a small answer: the fact, where it came from, and a li
    ```
    (`searchItems`). If the wording is uncertain, also run
    `semanticSearchItems({ query: "what we decided about pricing", limit: 10 })`.
-   - "When did we last...": target events and transcripts, add
-     `"sortOptions": [{ "field": "startTime", "direction": "desc" }]` with a single `event` target.
+   - "When did we last...": search with one target only, `{ "target": "event", "eventStartTimeMax": "<now, local>", "eventTimeZone": "<tz>" }`,
+     plus `"sortOptions": [{ "field": "startTime", "direction": "desc" }]` (startTime sorting needs the event target alone).
    - "Who owns...": look for a doc or task on the topic (`searchItems` text target; results carry
      `assignedTo`), and resolve profile URIs to names with `listOrgMembers`.
 
@@ -28,7 +28,9 @@ A small question deserves a small answer: the fact, where it came from, and a li
      know roughly where), then **check the screen at that moment**:
      `readScreenShareScreenshots({ id: callUri, startSec, endSec })`. Numbers, dates, names and
      choices are often on the shared screen (a pricing table, a roadmap, a chosen option), and the
-     screenshot is more exact than what was said. See the `tana-meeting` skill for the pairing.
+     screenshot is more exact than what was said. When the answer is a number, date or name on that
+     frame, read it off the pixels: `readScreenshotImages({ id: callUri, cids: [cid] })`.
+     See the `tana-meeting` skill for the pairing.
    - A pasted Tana link: read exactly that item (the `tana-meeting` skill shows how).
 
 3. **Check it is still true.** If a later meeting or doc changed the answer, the latest one wins.

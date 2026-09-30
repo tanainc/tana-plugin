@@ -17,7 +17,9 @@ the meeting so everyone sees it when the meeting opens, and tell the user where 
    one line: "Adding to Design review, Thu 1 Oct 10:00."
 
 2. **Read it.** `readEvent({ eventUri })`: note `agendaUri`, `pinnedItems` and `relatedDocs`, so you
-   don't add something that's already there.
+   don't add something that's already there. For a past meeting ("add my notes to yesterday's
+   meeting"), also list its frames with `readScreenShareScreenshots({ id: callUri })`, so notes can
+   point at what was on screen and embed a frame with `![what it shows](cid:<cid>)`.
 
 3. **Gather the item.** If it lives elsewhere (bugs in an issue tracker, a web page, a file in the repo),
    collect it with the tools you have and turn it into short text with links. If it is a Tana doc,

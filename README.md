@@ -2,7 +2,7 @@
 
 ## What this is
 
-Tana turns every meeting into a transcript, screen-share screenshots and tasks. This plugin lets your coding agent read and use all of it. It installs the Tana MCP connector plus nine skills that know how to find a meeting, read everything in it, and act on what was decided. One repository installs into Claude Code, claude.ai and Claude Desktop, ChatGPT and Codex, and Cursor.
+Tana turns every meeting into a transcript, screen-share screenshots and tasks. Tana is the only meeting tool that captures what was shared on screen, so the agent sees the bug, the sketch or the slide people were talking about, not just the words. This plugin lets Claude, ChatGPT and your coding agent read and use all of it. It installs the Tana MCP connector plus nine skills that know how to find a meeting, read everything in it, and act on what was decided. One repository installs into Claude Code, claude.ai and Claude Desktop, ChatGPT and Codex, and Cursor.
 
 ## Install
 

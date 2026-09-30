@@ -1,6 +1,6 @@
 ---
 name: find-prior-art
-description: "Search the team's Tana meetings and docs for earlier discussion of a topic: past feedback, bug reports, decisions, objections, customer requests, experiments that were tried. Reads the best hits, including the exact transcript passages and screenshots where the topic came up, and reports what was said, when and by whom, with links. Use when the user asks 'has anyone discussed this before?', 'did we try this already?', 'any feedback on X?', 'what have customers said about Y?', 'have we seen this bug before?', 'what's the history of Z?', or is mid-work and wonders whether the team has been here before."
+description: "Search the team's Tana meetings and docs for earlier discussion of a topic: past feedback, bug reports, decisions, objections, customer requests, experiments that were tried. Reads the best hits, including the exact transcript passages and screenshots where the topic came up, and reports what was said, when and by whom, with links. Use when the user asks 'has anyone discussed this before?', 'did we try this already?', 'any feedback on X?', 'what have customers said about Y?', 'have we seen this bug before?', 'what's the history of Z?', or is mid-work and wonders whether the team has been here before. For one quick fact (a decision, a date, an owner), use ask-tana instead."
 ---
 
 # Find prior art
