@@ -10,6 +10,7 @@
     "url": "https://tana.inc"
   },
   "homepage": "https://tana.inc",
+  "privacyPolicyUrl": "https://tana.inc/privacy",
   "repository": "https://github.com/tanainc/tana-plugin",
   "license": "MIT",
   "keywords": ["tana", "meetings", "transcripts", "screen-share", "mcp", "notes", "tasks", "calendar"]

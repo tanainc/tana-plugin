@@ -41,8 +41,8 @@
       "Has anyone discussed this before in Tana?"
     ],
     "brandColor": "#F76B15",
-    "composerIcon": "./assets/logo.svg",
-    "logo": "./assets/logo.svg",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
     "screenshots": [],
     "supportURL": "https://tana.inc/help"
   }
