@@ -2,7 +2,7 @@
 
 ## What this is
 
-Tana turns every meeting into a transcript, screen-share screenshots and tasks. Tana captures what was shared on screen, so the agent sees the bug, the sketch or the slide people were talking about, not just the words. This plugin lets Claude and ChatGPT (and coding agents like Claude Code, Codex and Cursor) read and use all of it. It installs the Tana MCP connector plus nine skills that know how to find a meeting, read everything in it, and act on what was decided. One repository installs into Claude Code, claude.ai and Claude Desktop, ChatGPT and Codex, and Cursor.
+Tana turns every meeting into a transcript, screen-share screenshots and tasks. Tana captures what was shared on screen, so the agent sees the bug, the sketch or the slide people were talking about, not just the words. This plugin lets Claude and ChatGPT (and coding agents like Claude Code, Codex and Cursor) read and use all of it. It installs the Tana MCP connector plus nine skills that know how to find a meeting, read everything in it, and act on what was decided. One repository installs into Claude Code, claude.ai and Claude Desktop, ChatGPT and Codex, Cursor, Antigravity and Gemini CLI.
 
 ## Install
 
@@ -37,6 +37,20 @@ codex plugin add tana@tana
 Open this link to install the connector:
 
 cursor://anysphere.cursor-deeplink/mcp/install?name=tana&config=eyJ1cmwiOiJodHRwczovL2hvbWUudGFuYS5pbmMvbWNwIn0=
+
+### Antigravity
+
+```
+agy plugin install https://github.com/tanainc/tana-plugin
+```
+
+### Gemini CLI
+
+```
+gemini extensions install https://github.com/tanainc/tana-plugin
+```
+
+Then run `/mcp auth tana` inside Gemini CLI to sign in.
 
 ### Any other agent
 
