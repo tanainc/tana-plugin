@@ -1,0 +1,10 @@
+{
+  "name": "tana",
+  "version": "0.1.0",
+  "description": "Read and act on your Tana meetings: transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
+  "mcpServers": {
+    "tana": {
+      "httpUrl": "https://home.tana.inc/mcp"
+    }
+  }
+}
