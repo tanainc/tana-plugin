@@ -44,6 +44,8 @@ cursor://anysphere.cursor-deeplink/mcp/install?name=tana&config=eyJ1cmwiOiJodHRw
 agy plugin install https://github.com/tanainc/tana-plugin
 ```
 
+Then, inside `agy`, type `/mcp`, pick the Tana server and choose **Authenticate** to sign in. Until you do, the Tana tools are not offered to the agent.
+
 ### Gemini CLI
 
 ```
