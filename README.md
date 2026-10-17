@@ -50,7 +50,7 @@ agy plugin install https://github.com/tanainc/tana-plugin
 gemini extensions install https://github.com/tanainc/tana-plugin
 ```
 
-Then run `/mcp auth tana` inside Gemini CLI to sign in.
+Then run `/mcp auth tana` inside Gemini CLI to sign in. Needs Gemini CLI 0.55.1 or newer: older versions drop the Tana sign-in right after it succeeds.
 
 ### Any other agent
 
