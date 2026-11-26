@@ -45,7 +45,7 @@ transcript is the source for what was said about it.**
      `readSkill({ title: "Create storyboard artifact" })` (or `slides` / `customer journey`) to get that
      type's `data` schema. In a storyboard, put the real screen-share frames in the scenes'
      `screenshotIds`: what was actually on screen beats a generated illustration.
-   Either one lands as a proposal in Tana for the user to approve. Once approved, offer to pin it to
+   Either one is applied at once or waits as a proposal for the user to approve. Once it is in Tana, offer to pin it to
    the meeting page: `pinItem({ target: "event", targetUri: eventUri, itemUris: [docUri] })`.
 
 ## Templates

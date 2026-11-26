@@ -48,7 +48,7 @@ says what people decided about it. This skill turns both into a confirmed plan a
 8. **Report back** (template below). Offer, in one line, to record the result in Tana, for example a
    short "implemented" note appended to the meeting summary:
    `updateItems({ updates: [{ id: summaryUri, appendContent }], recap })`.
-   That lands as a proposal in Tana for the user to approve.
+   That is applied at once or waits as a proposal for the user to approve.
 
 ## Spec template
 

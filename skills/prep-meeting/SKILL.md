@@ -51,10 +51,10 @@ from the last meetings with the same people: what they said, and what everyone l
 
 7. **Offer to attach it**, in one line. If the user agrees:
    - create the prep doc: `createItems({ items: [{ title: "Prep: <meeting>, <date>", content }], recap })`.
-     This lands as a proposal in Tana for the user to approve.
-   - once they have approved it, pin it to the meeting page so it's there when the meeting starts:
-     `pinItem({ target: "event", targetUri: eventUri, itemUris: [docUri] })`. Pinning only works on an
-     approved doc; if it is still pending, say so and pin after approval.
+     This is applied at once or waits as a proposal for the user to approve.
+   - once it is applied or approved, pin it to the meeting page so it's there when the meeting starts:
+     `pinItem({ target: "event", targetUri: eventUri, itemUris: [docUri] })`. Pinning does not work on a
+     doc that still waits; if it is pending, say so and pin after approval.
 
 ## Output
 
