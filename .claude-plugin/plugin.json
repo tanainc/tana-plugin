@@ -2,7 +2,7 @@
   "name": "tana",
   "displayName": "Tana",
   "description": "Bring your Tana meetings into Claude and ChatGPT (and your coding agent): transcripts, screen-share screenshots, tasks and calendar, through the Tana MCP server plus skills.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "mcpServers": "./.mcp.json",
   "author": {
     "name": "Tana",

@@ -6,8 +6,8 @@ description: "Work through the user's open tasks in Tana: list what is assigned 
 # Do my tasks
 
 The user has a list of things they said they'd do. Many are agent work: a draft, a summary, some
-research, a code change, a reply. Find them, do the ones you can, put the results back into Tana for
-the user to approve, and hand back a short list of what only they can do.
+research, a code change, a reply. Find them, do the ones you can, put the results back into Tana, as
+proposals wherever the user should look first, and hand back a short list of what only they can do.
 
 ## Steps
 
@@ -52,14 +52,14 @@ the user to approve, and hand back a short list of what only they can do.
      task itself: `updateItems({ updates: [{ id: taskUri, appendContent: "## Draft\n..." }], recap })`
    - a meeting action item with no task yet: `createItems({ items: [{ title, state: "In Progress", assignedTo: ["<me>"] }], recap })`
    - completion, only when the task is fully done: `updateItems({ updates: [{ id: taskUri, state: "Completed" }], recap })`
-   Everything lands as a proposal in Tana for the user to approve.
+   Each one is applied at once or waits as a proposal for the user to approve; the write result says which.
 
 8. **Report** (template below).
 
 ## Output
 
 ```
-Did 3 of 7. Everything is proposed in Tana, waiting for your approval.
+Did 3 of 7. What says "proposed" waits for your approval in Tana.
 
 Done
 - "Write Acme follow-up email": draft added to the task, based on the 29 Sep call (the pricing

@@ -44,7 +44,7 @@ sensible time and an agenda, so the meeting starts with context instead of "so, 
      "attendeeEmails": ["lena@acme.com"],
      "recap": "A 30-minute pricing meeting with Anna and Mads on Thursday, agenda included." }
    ```
-   (`createEvent`). This lands as a proposal in Tana for the user to approve. Approving it creates the
+   (`createEvent`). An event with other people waits as a proposal in Tana for the user to approve. Approving it creates the
    event and may send real calendar invitations.
 
 7. **Report** in one or two lines, and pass on anything the result says about a missing calendar
@@ -54,7 +54,7 @@ sensible time and an agenda, so the meeting starts with context instead of "so, 
 
 ```
 Proposed in Tana: "Pricing: annual plans", Thu 1 Oct 14:00–14:30 (Oslo) with Anna, Mads and
-lena@acme.com, agenda included. Approve it in Tana to add it to your Google Calendar and send invites.
+lena@acme.com, agenda included. Approve it in Tana, or tell me to go ahead, to add it to your Google Calendar and send invites.
 ```
 
 ## Rules

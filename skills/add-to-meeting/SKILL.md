@@ -35,11 +35,12 @@ the meeting so everyone sees it when the meeting opens, and tell the user where 
    | --- | --- |
    | An existing Tana doc | `pinItem({ operation: "pin", target: "event", targetUri: eventUri, itemUris: [docUri] })`. Applies right away; it shows on the meeting page for everyone who can see the meeting. |
    | Agenda items, questions, links, a bug list | If the agenda exists (`readItems({ ids: [agendaUri] })` returns it): `updateItems({ updates: [{ id: agendaUri, appendContent: "- Promo-code bug on mobile: <link>" }], recap })`. |
-   | Same, but the meeting has no agenda yet | `createItems({ items: [{ title: "Agenda: <meeting>, <date>", content }], recap })`, then pin it with `pinItem` once the user has approved it. |
-   | Longer notes or a doc to bring | `createItems` with the content, then pin it after approval. |
+   | Same, but the meeting has no agenda yet | `createItems({ items: [{ title: "Agenda: <meeting>, <date>", content }], recap })`, then pin it with `pinItem` once it is applied or the user has approved it. |
+   | Longer notes or a doc to bring | `createItems` with the content, then pin it once it is applied or approved. |
 
-   Writes with `updateItems` and `createItems` land as a proposal in Tana for the user to approve;
-   `pinItem` does not need approval but only works on an approved doc.
+   A write with `updateItems` or `createItems` is applied at once or waits as a proposal for the user to approve
+   (see `tana-meeting`, "Writing to Tana"); `pinItem` does not need approval but does not work on a doc
+   that still waits.
 
 5. **Report in one or two lines** (template below), including anything that still waits for approval.
 
@@ -48,7 +49,7 @@ the meeting so everyone sees it when the meeting opens, and tell the user where 
 ```
 Added to Design review, Thu 1 Oct 10:00 <link>:
 - Pinned "Checkout spec v2" to the meeting page
-- Proposed 3 agenda items (the mobile promo-code bugs). Approve them in Tana to add them.
+- Proposed 3 agenda items (the mobile promo-code bugs). Approve them in Tana, or tell me to go ahead.
 ```
 
 ## Examples

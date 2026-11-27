@@ -6,7 +6,7 @@ Tana turns every meeting into a transcript, screen-share screenshots and tasks. 
 
 ## Install
 
-The first time you use it, you sign in to Tana once. Every write is a proposal you approve in Tana.
+The first time you use it, you sign in to Tana once. Small changes you ask for in your own notes can apply right away. Everything else becomes a proposal, which you approve in Tana or by telling your AI to go ahead.
 
 ### Claude (desktop and web)
 
@@ -74,7 +74,7 @@ npx skills add https://github.com/tanainc/tana-plugin
 
 ## What data it sends
 
-The plugin only asks Tana for what your prompt needs, and only from the Tana organisation you connected. Nothing is uploaded in the background. Every write is a proposal: you approve it in Tana before anything changes.
+The plugin only asks Tana for what your prompt needs, and only from the Tana organisation you connected. Nothing is uploaded in the background. Small changes you ask for in your own notes can apply right away. Everything else becomes a proposal, which you approve in Tana or by telling your AI to go ahead.
 
 ## Links
 

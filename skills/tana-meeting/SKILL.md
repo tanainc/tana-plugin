@@ -1,6 +1,6 @@
 ---
 name: tana-meeting
-description: "Find and fully read a Tana meeting: the transcript, every screen-share screenshot, attendees, attached docs and outcomes. Use whenever the user mentions a meeting, call, sync, standup, 1:1, demo, interview, workshop or customer call ('yesterday's design sync', 'my call with Acme', 'the meeting on Tuesday', 'what did we look at in the review?'), pastes a Tana link (home.tana.inc, meet.tana.inc or a tana: URI), or another Tana skill says to locate and read a meeting. Also the reference for how writes to Tana work: every change becomes a proposal the user approves in Tana."
+description: "Find and fully read a Tana meeting: the transcript, every screen-share screenshot, attendees, attached docs and outcomes. Use whenever the user mentions a meeting, call, sync, standup, 1:1, demo, interview, workshop or customer call ('yesterday's design sync', 'my call with Acme', 'the meeting on Tuesday', 'what did we look at in the review?'), pastes a Tana link (home.tana.inc, meet.tana.inc or a tana: URI), or another Tana skill says to locate and read a meeting. Also the reference for how writes to Tana work: when a change applies at once and when it waits as a proposal the user approves."
 ---
 
 # Read a Tana meeting
@@ -89,18 +89,22 @@ one", "move it here" against the frame that was visible at that second. Cite mom
 `getShareLink({ ids: [eventUri, docUri] })` returns https:// links that open in Tana for members of the
 workspace. Use them whenever you cite a meeting or doc outside Tana (code comments, Slack, chat apps).
 
-## Writing to Tana: every write is a proposal
+## Writing to Tana: applied at once, or a proposal
 
-Every write tool (`createItems`, `updateItems`, `createEvent`, `updateEvent`, `createArtifact`,
-`deleteItems`, ...) creates a **proposal**. The user reviews and approves it in Tana; nothing changes until
-they do. That is the contract: you never change Tana silently.
+A write tool (`createItems`, `updateItems`, `createEvent`, `updateEvent`, `createArtifact`,
+`deleteItems`, ...) either applies the change at once or creates a **proposal** that waits until the user
+approves it. That is the contract: a change in Tana never surprises the user.
 
-- Always pass `recap`: 1–2 sentences to the user about what you propose and why. It opens the proposal in Tana.
-- Leave `autoApprove` unset and never call `approveProposals` on your own. Do either only when the user
-  explicitly tells you, in this conversation, to apply the change without review.
-- After a write, say in one line: "Proposed in Tana: <what>. Open it in Tana to approve."
+- Always pass `recap`: 1–2 sentences to the user about what you are changing and why. It opens the proposal in Tana.
+- `autoApprove` decides which of the two happens. Its description on each write tool says when a change may
+  apply at once. Follow that description; when you are not sure it is met, leave `autoApprove` unset so the
+  change waits as a proposal.
+- Call `approveProposals` once the user has agreed to a pending proposal ("go ahead", "looks good"), not
+  before they know what it holds.
+- After a write, say in one line what happened. Applied: "Done in Tana: <what>." Waiting: "Proposed in
+  Tana: <what>. Approve it in Tana, or tell me to go ahead." The write result says which it was, and
   `listProposals({ sessionUri })` shows what is pending (the write result returns `sessionUri`).
-- One exception: `pinItem` applies immediately (it only adds a doc to a meeting page). Say what you pin.
+- `pinItem` always applies immediately (it only adds a doc to a meeting page). Say what you pin.
 
 ## Rules
 
